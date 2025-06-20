@@ -46,14 +46,12 @@ class Page():
     def open_checkout(self): #! It would be more efficient to just open by url, but clicking button is fancier ig
         cart_btn = self.browser.find_element(By.XPATH, '//button[@id="checkout"]')
         cart_btn.click()
-        input('a')
     
     def input_checkout(self, name: str, surname: str, zip_code: int):
         name_input, surname_input, zip_code_input = self.browser.find_elements(By.XPATH, '//input[@class="input_error form_input"]')
         name_input.send_keys(name)
         surname_input.send_keys(surname)
         zip_code_input.send_keys(zip_code)
-
     
     def close(self):
         self.browser.close()
@@ -79,6 +77,7 @@ def main():
     page.open_cart()
     page.check_if_in_cart()
     page.open_checkout()
+    page.input_checkout(name, surname, zip_code)
     page.close()
 
 
