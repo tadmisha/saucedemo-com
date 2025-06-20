@@ -30,6 +30,11 @@ class Page():
 
         login_btn = self.browser.find_element(By.XPATH,'//input[@class="submit-button btn_action"]')
         login_btn.click()
+    
+    def add_to_cart(self, id: str):
+        add_btn = self.browser.find_element(By.XPATH, '//button[@id="add-to-cart-sauce-labs-bolt-t-shirt"]')
+        add_btn.click()
+    
 
     
     def close(self):
@@ -39,13 +44,17 @@ class Page():
 
 
 def main():
-    ua = UserAgent().random
-    print(type(ua))
     url = "https://www.saucedemo.com/"
-    page = Page(url, ua)
-    page.login("standard_user", "secret_sauce")
-    page.close()
 
+    username = "standard_user"
+    password = "secret_sauce"
+    product_tag_id = "add-to-cart-sauce-labs-bolt-t-shirt"
+
+    ua = UserAgent().random
+
+    page = Page(url, ua)
+    page.login(username, password)
+    page.add_to_cart(product_tag_id)
 
 
 if (__name__ == "__main__"):
