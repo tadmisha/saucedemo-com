@@ -38,7 +38,10 @@ class Page():
     def open_cart(self): #! It would be more efficient to just open by url, but clicking button is fancier ig
         cart_btn = self.browser.find_element(By.XPATH, '//a[@class="shopping_cart_link"]')
         cart_btn.click()
-    
+
+    def check_if_in_cart(self):
+        products = self.browser.find_elements(By.XPATH, '//div[@class="cart_item_label"]')
+        if len(products) != 1: raise RuntimeError("Product not in the cart.")
     
     def close(self):
         self.browser.close()
@@ -58,6 +61,7 @@ def main():
     page.login(username, password)
     page.add_to_cart()
     page.open_cart()
+    page.check_if_in_cart()
     page.close()
 
 
