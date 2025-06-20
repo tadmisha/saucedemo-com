@@ -1,3 +1,5 @@
+https://github.com/Hexlet/ru-test-assignments/blob/main/QA%2FEffective%20Mobile%2FREADME.md
+
 E2E UI
 
 Цель:
