@@ -52,6 +52,9 @@ class Page():
         name_input.send_keys(name)
         surname_input.send_keys(surname)
         zip_code_input.send_keys(zip_code)
+        
+        submit_btn = self.browser.find_element(By.XPATH, "submit-button btn btn_primary cart_button btn_action")
+        submit_btn.click()
     
     def close(self):
         self.browser.close()
