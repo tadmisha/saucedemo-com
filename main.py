@@ -82,16 +82,21 @@ def main():
 
     ua = UserAgent().random
 
-    page = Page(url, ua)
-    page.login(username, password)
-    page.add_to_cart()
-    page.open_cart()
-    page.check_if_in_cart()
-    page.open_checkout()
-    page.input_checkout(name, surname, zip_code)
-    page.finish_checkout()
-    page.check_if_bought()
-    page.close()
+    try:
+        page = Page(url, ua)
+        page.login(username, password)
+        page.add_to_cart()
+        page.open_cart()
+        page.check_if_in_cart()
+        page.open_checkout()
+        page.input_checkout(name, surname, zip_code)
+        page.finish_checkout()
+        page.check_if_bought()
+        print("Purchased succesfully.")
+        
+    except Exception as ex: print(f"[ERROR] {type(ex).__name__}: {ex}")
+
+    finally: page.close()
 
 
 
