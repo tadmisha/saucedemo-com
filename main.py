@@ -55,7 +55,6 @@ class Page():
         
         submit_btn = self.browser.find_element(By.XPATH, '//input[@class="submit-button btn btn_primary cart_button btn_action"]')
         submit_btn.click()
-        input('')
     
     def close(self):
         self.browser.close()
