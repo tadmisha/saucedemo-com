@@ -56,6 +56,10 @@ class Page():
         submit_btn = self.browser.find_element(By.XPATH, '//input[@class="submit-button btn btn_primary cart_button btn_action"]')
         submit_btn.click()
     
+    def finish_checkout(self):
+        finish_btn = self.browser.find_element(By.XPATH, '//button[@class="btn btn_action btn_medium cart_button"]')
+        finish_btn.click()
+
     def close(self):
         self.browser.close()
         self.browser.quit()
@@ -81,6 +85,7 @@ def main():
     page.check_if_in_cart()
     page.open_checkout()
     page.input_checkout(name, surname, zip_code)
+    page.finish_checkout()
     page.close()
 
 
