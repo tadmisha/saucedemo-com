@@ -60,6 +60,10 @@ class Page():
         finish_btn = self.browser.find_element(By.XPATH, '//button[@class="btn btn_action btn_medium cart_button"]')
         finish_btn.click()
 
+    def check_if_bought(self):
+        headers = self.browser.find_elements(By.XPATH, '//h2[@class="complete-header"]')
+        if len(headers) != 1: raise RuntimeError("Checkout failed.")
+
     def close(self):
         self.browser.close()
         self.browser.quit()
@@ -86,6 +90,7 @@ def main():
     page.open_checkout()
     page.input_checkout(name, surname, zip_code)
     page.finish_checkout()
+    page.check_if_bought()
     page.close()
 
 
