@@ -31,11 +31,14 @@ class Page():
         login_btn = self.browser.find_element(By.XPATH,'//input[@class="submit-button btn_action"]')
         login_btn.click()
     
-    def add_to_cart(self, id: str):
-        add_btn = self.browser.find_element(By.XPATH, '//button[@id="add-to-cart-sauce-labs-bolt-t-shirt"]')
+    def add_to_cart(self, id: str = "add-to-cart-sauce-labs-bolt-t-shirt"):
+        add_btn = self.browser.find_element(By.XPATH, f'//button[@id="{id}"]')
         add_btn.click()
-    
 
+    def open_cart(self): #! It would be more efficient to just open by url, but clicking button is fancier ig
+        cart_btn = self.browser.find_element(By.XPATH, '//a[@class="shopping_cart_link"]')
+        cart_btn.click()
+    
     
     def close(self):
         self.browser.close()
@@ -48,13 +51,15 @@ def main():
 
     username = "standard_user"
     password = "secret_sauce"
-    product_tag_id = "add-to-cart-sauce-labs-bolt-t-shirt"
 
     ua = UserAgent().random
 
     page = Page(url, ua)
     page.login(username, password)
-    page.add_to_cart(product_tag_id)
+    page.add_to_cart()
+    page.open_cart()
+    page.close()
+
 
 
 if (__name__ == "__main__"):
